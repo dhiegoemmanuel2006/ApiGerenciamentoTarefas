@@ -44,7 +44,7 @@ public class TaskController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskDTO task) throws Exception {
-     return taskService.update(id, task);
+     return taskService.update(id, task)
     }
 
 }
