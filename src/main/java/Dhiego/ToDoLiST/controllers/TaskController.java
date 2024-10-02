@@ -31,6 +31,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.findAll());
     }
 
+    @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody TaskDTO task) throws Exception {
         Task newTask = new Task(task);
         taskService.save(newTask);
@@ -43,10 +44,7 @@ public class TaskController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskDTO task) throws Exception {
-        Task newTask = new Task(task);
-        taskService.delete(id);
-        taskService.save(newTask);
-        return ResponseEntity.ok().body(newTask);
+     return taskService.update(id, task);
     }
 
 }
